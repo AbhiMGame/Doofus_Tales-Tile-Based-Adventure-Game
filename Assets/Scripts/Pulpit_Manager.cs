@@ -12,41 +12,35 @@ public class Pulpit_Manager : MonoBehaviour
     public Vector3 minPosition;
     public Vector3 maxPosition;
     public Vector3 origin = Vector3.zero;
-
-    IEnumerator timer;
+    
 
     public void Start()
     {
-
-        StartCoroutine(StartTimer());
-        
+      StartCoroutine(StartTimer());       
     }
 
-    
-    public IEnumerator StartTimer(int TimeRemaining = 5)
+   
+    public IEnumerator StartTimer(float TimeRemaining = 5.0f)
     {
-        for (int i = TimeRemaining; i > 0; i--)
+        Vector3 randomPosition = origin + new Vector3(
+             Random.Range(minPosition.x, maxPosition.x),
+             Random.Range(minPosition.y, maxPosition.y),
+             Random.Range(minPosition.z, maxPosition.z));
+
+        for (float i = TimeRemaining; i > 0; i--)
         {
             Destroycountdown_Text.text = i.ToString("00");
             yield return new WaitForSeconds(1f);
-
+            if (i == 3.0f)
+            {
+                Instantiate(Pulpit_Spawn, randomPosition, Quaternion.identity);
+            }
         }
-        Vector3 randomPosition = origin + new Vector3(
-       Random.Range(minPosition.x, maxPosition.x),
-       Random.Range(minPosition.y, maxPosition.y),
-       Random.Range(minPosition.z, maxPosition.z)
-
-   );
-
-        Instantiate(Pulpit_Spawn, randomPosition , Quaternion.identity);
-
-        StartCoroutine(StartTimer());
-        Destroy(gameObject, 0.5f);
+        Destroy(gameObject);
     }
-    
-
-   
-
-
 
 }
+
+
+
+
