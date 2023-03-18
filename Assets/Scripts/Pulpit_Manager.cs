@@ -9,7 +9,9 @@ public class Pulpit_Manager : MonoBehaviour
     [SerializeField]
     public GameObject Pulpit_Spawn;
     public TextMesh Destroycountdown_Text;
-
+    public Vector3 minPosition;
+    public Vector3 maxPosition;
+    public Vector3 origin = Vector3.zero;
 
     IEnumerator timer;
 
@@ -29,13 +31,17 @@ public class Pulpit_Manager : MonoBehaviour
             yield return new WaitForSeconds(1f);
 
         }
-        
-        transform.localPosition = new Vector3(6, 0, 0);
+        Vector3 randomPosition = origin + new Vector3(
+       Random.Range(minPosition.x, maxPosition.x),
+       Random.Range(minPosition.y, maxPosition.y),
+       Random.Range(minPosition.z, maxPosition.z)
 
-        Instantiate(Pulpit_Spawn, transform.localPosition, Quaternion.identity);
+   );
+
+        Instantiate(Pulpit_Spawn, randomPosition , Quaternion.identity);
 
         StartCoroutine(StartTimer());
-        Destroy(gameObject, 2.5f);
+        Destroy(gameObject, 0.5f);
     }
     
 }
