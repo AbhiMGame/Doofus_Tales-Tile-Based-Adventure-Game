@@ -44,4 +44,9 @@ public class Pulpit_Manager : MonoBehaviour
         Destroy(gameObject, 0.5f);
     }
     
+
+   
+
+
+
 }
