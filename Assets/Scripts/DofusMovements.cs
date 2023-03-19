@@ -8,12 +8,12 @@ public class DofusMovements : MonoBehaviour
 {
     [SerializeField]private int Dofus_Speed = 3;
     public AudioSource audio;
-    int collisioncount;
+    
     
     // Start is called before the first frame update
     void Start()
     {
-        
+      
     }
 
     // Update is called once per frame
@@ -41,8 +41,7 @@ public class DofusMovements : MonoBehaviour
             SceneManager.LoadScene(0);
         }
 
-
-
+        
     }
 
     private void OnCollisionEnter(Collision col)
@@ -50,10 +49,13 @@ public class DofusMovements : MonoBehaviour
         
         if (col.gameObject.tag.Equals("Enemy") )
         {
-        
-            ScoreManager.scoreamount += 1;
-
-            audio.Play();
+            
+            
+                ScoreManager.scoreamount += 1;
+                
+                audio.Play();
+            
+            
            
         }
     }

@@ -34,8 +34,10 @@ public class Pulpit_Manager : MonoBehaviour
                    vectorrandom.Add(new Vector3(0f, 0f, 9f));
                    vectorrandom.Add(new Vector3(-9f, 0f, 0f));
                    vectorrandom.Add(new Vector3(0f, 0f, -9f));
+        //vectorrandom.Add(new Vector3(9f, 0f, 9f));
+        vectorrandom.Add(new Vector3(-9f, 0f, -9f));
 
-        int index = Random.Range(0, 3);
+        int index = Random.Range(0, 4);
 
                    Vector3 RandomVectorSpawnOffset = vectorrandom.ElementAt(index);
 
