@@ -16,8 +16,9 @@ public class Pulpit_Manager : MonoBehaviour
     // public Vector3 origin = Vector3.zero;
     public Vector3 currentPosition;
     public Vector3 nextPosition;
+    
 
-   
+
 
     public void Start()
     {
@@ -39,21 +40,23 @@ public class Pulpit_Manager : MonoBehaviour
                    Vector3 RandomVectorSpawnOffset = vectorrandom.ElementAt(index);
 
                    nextPosition = currentPosition + RandomVectorSpawnOffset;
-    
+                  
 
                  //  Vector3 randomPosition = new Vector3(
-             //Random.Range(minPosition.x + 4.5f, maxPosition.x + 4.5f),
-             //Random.Range(minPosition.y + 4.5f, maxPosition.y + 4.5f),
-           //  Random.Range(minPosition.z + 4.5f, maxPosition.z + 4.5f));
+                 //Random.Range(minPosition.x + 4.5f, maxPosition.x + 4.5f),
+                 //Random.Range(minPosition.y + 4.5f, maxPosition.y + 4.5f),
+                 //  Random.Range(minPosition.z + 4.5f, maxPosition.z + 4.5f));
 
-            for (float i = TimeRemaining; i > 0; i--)
+        for (float i = TimeRemaining; i > 0; i--)
             {
             nextPosition = currentPosition + RandomVectorSpawnOffset;
             Destroycountdown_Text.text = i.ToString("00");
                 yield return new WaitForSeconds(1f);
-                if (i == 3.0f && nextPosition != currentPosition)
+                
+                if (i == 3.0f)
                 {
                     Instantiate(Pulpit_Spawn, nextPosition, Quaternion.identity);
+                     
                 }
             }
             Destroy(gameObject);
