@@ -7,11 +7,12 @@ using UnityEngine.UI;
 public class DofusMovements : MonoBehaviour
 {
     [SerializeField]private int Dofus_Speed = 3;
+    public AudioSource audio;
     
     // Start is called before the first frame update
     void Start()
     {
-
+        AudioSource audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -48,7 +49,8 @@ public class DofusMovements : MonoBehaviour
         if (col.gameObject.tag.Equals("Enemy"))
         {
             ScoreManager.scoreamount += 1;
-            
+
+            audio.Play();
         }
     }
 
